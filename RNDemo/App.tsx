@@ -7,7 +7,7 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import FunctionTimerView from './src/6/Timer/components/FunctionTimerView';
+import FunctionTimerView from './src/6/6.8-6.9/components/FunctionTimerView';
 import {
   SafeAreaView,
   StatusBar,
