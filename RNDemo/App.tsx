@@ -7,23 +7,18 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import FunctionView from './src/6/test/components/FunctionView';
+import ClassTimerView from './src/6/Timer/components/ClassTimerView';
+
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 function App(): React.JSX.Element {
@@ -39,10 +34,7 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View style = {styles.container}>
-       {/* <ClassView name="lisi" age={25} level="top" sex={true} /> */}
-       <FunctionView name="lisi" age={25} level="top" sex={true} />
-      </View>
+      <ClassTimerView/>
     </SafeAreaView>
   );
 }
