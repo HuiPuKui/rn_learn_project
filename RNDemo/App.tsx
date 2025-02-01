@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import TextDemo from './src/7/7.3/components/TextDemo';
+import ImageDemo from './src/7/7.4/components/ImageDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <TextDemo />
+        <ImageDemo />
       </View>
     </SafeAreaView>
   );
