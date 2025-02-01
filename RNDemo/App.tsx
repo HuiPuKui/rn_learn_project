@@ -7,8 +7,7 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import ClassTimerView from './src/6/Timer/components/ClassTimerView';
-
+import FunctionTimerView from './src/6/Timer/components/FunctionTimerView';
 import {
   SafeAreaView,
   StatusBar,
@@ -34,7 +33,7 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ClassTimerView/>
+      <FunctionTimerView/>
     </SafeAreaView>
   );
 }
