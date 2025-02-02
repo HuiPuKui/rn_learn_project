@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import ImageDemo from './src/7/7.4/components/ImageDemo';
+import ImageBackgroundDemo from './src/7/7.5/components/ImageBackgroundDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <ImageDemo />
+        <ImageBackgroundDemo />
       </View>
     </SafeAreaView>
   );
