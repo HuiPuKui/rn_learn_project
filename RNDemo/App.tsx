@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import TouchableHighlightDemo from './src/7/7.8/components/TouchableHighlightDemo';
+import TouchableWithoutFeedbackDemo from './src/7/7.9/components/TouchableWithoutFeedbackDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <TouchableHighlightDemo />
+        <TouchableWithoutFeedbackDemo />
       </View>
     </SafeAreaView>
   );
