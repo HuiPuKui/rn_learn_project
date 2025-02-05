@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import ButtonDemo from './src/7/7.10/components/ButtonDemo';
+import PressableDemo from './src/7/7.11/components/PressableDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <ButtonDemo />
+        <PressableDemo />
       </View>
     </SafeAreaView>
   );
