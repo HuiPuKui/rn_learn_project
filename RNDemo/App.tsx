@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import ModalDemo from './src/7/7.16/components/ModalDemo';
+import StatusBarDemo from './src/7/7.17/components/StatusBarDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -15,25 +15,16 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        barStyle='dark-content'
+        backgroundColor='#FFFFFF'
       />
       <View style={styles.container}>
-        <ModalDemo />
+        <StatusBarDemo />
       </View>
     </SafeAreaView>
   );
