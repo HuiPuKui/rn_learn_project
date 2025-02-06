@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import SectionListDemo from './src/7/7.14/components/SectionListDemo';
+import RefreshControlDemo from './src/7/7.15/components/RefreshControlDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <SectionListDemo />
+        <RefreshControlDemo />
       </View>
     </SafeAreaView>
   );
