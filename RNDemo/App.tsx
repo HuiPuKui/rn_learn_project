@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import RefreshControlDemo from './src/7/7.15/components/RefreshControlDemo';
+import ModalDemo from './src/7/7.16/components/ModalDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <RefreshControlDemo />
+        <ModalDemo />
       </View>
     </SafeAreaView>
   );
