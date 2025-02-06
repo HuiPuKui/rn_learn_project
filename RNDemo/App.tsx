@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import SwitchDemo from './src/7/7.18/components/SwitchDemo';
+import PersonalInfo from './src/7/7.19/components/PersonalInfo';
 import {
   SafeAreaView,
   StatusBar,
@@ -18,15 +18,16 @@ import {
 function App(): React.JSX.Element {
 
   return (
-    <SafeAreaView>
-      <StatusBar
-        barStyle='dark-content'
-        backgroundColor='#FFFFFF'
-      />
-      <View style={styles.container}>
-        <SwitchDemo />
-      </View>
-    </SafeAreaView>
+    // <SafeAreaView>
+    //   <StatusBar
+    //     barStyle='dark-content'
+    //     backgroundColor='#FFFFFF'
+    //   />
+    //   <View style={styles.container}>
+    //     <ModalDemo />
+    //   </View>
+    // </SafeAreaView>
+    <PersonalInfo />
   );
 }
 
