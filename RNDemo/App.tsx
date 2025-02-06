@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import FlatListDemo from './src/7/7.13/components/FlatListDemo';
+import SectionListDemo from './src/7/7.14/components/SectionListDemo';
 import {
   SafeAreaView,
   StatusBar,
@@ -33,7 +33,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.container}>
-        <FlatListDemo />
+        <SectionListDemo />
       </View>
     </SafeAreaView>
   );
