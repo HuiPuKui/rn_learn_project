@@ -7,6 +7,7 @@ import UserInfoCard from "./UserInfoCard";
 import UserInfo from "../modules/UserInfo";
 
 import icon_bg from "../assets/images/icon_bg.png"
+import ContentCard from "./ContentCard";
 
 
 export default () => {
@@ -32,8 +33,8 @@ export default () => {
                     <NavigationBar />
                     <UserInfoCard userInfo={userInfo} />
                 </SafeAreaView>
-                <View style={styles.view2}>
-
+                <View style={styles.contentView}>
+                    <ContentCard />
                 </View>
             </ImageBackground>
         </View>
@@ -52,15 +53,11 @@ const styles = StyleSheet.create({
     },
     safeArea: {
         width: '100%',
-        height: '40%',
-        // backgroundColor: 'transparent'
-        // backgroundColor: 'yellow'
+        height: '40%'
     },
-    view2: {
+    contentView: {
         width: '100%',
-        height: '60%',
-        // backgroundColor: 'transparent'
-        // backgroundColor: 'blue'
+        height: '60%'
     }
 });
 

@@ -1,15 +1,28 @@
-import React from "react";
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Image, ImageBackground, Modal, SectionList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import default_avatar from "../assets/images/default_avatar.png";
 import icon_add from "../assets/images/icon_add.png";
 import icon_code from "../assets/images/icon_code.png";
 import icon_male from "../assets/images/icon_male.png";
 import icon_setting from "../assets/images/icon_setting.png";
+import icon_close_modal from "../assets/images/icon_close_modal.png";
+
+import { SectionData } from "../constants/Data";
 
 export default (props) => {
 
     const { userInfo } = props;
+
+    const [visible, setVisible] = useState(null);
+
+    const showModal = (modalType) => {
+        setVisible(modalType);
+    };
+
+    const hideModal = () => {
+        setVisible(null);
+    };
 
     const avatar = () => {
         return (
@@ -30,13 +43,82 @@ export default (props) => {
         );
     };
 
-    const dataItem = (number, desc) => {
-        // TODO: 点击出现滚动列表
+    const dataItem = (number, desc, disabled, callback) => {
         return (
-            <TouchableOpacity style={styles.dataItemTouchableOpacity}>
+            <TouchableOpacity 
+                style={styles.dataItemTouchableOpacity}
+                onPress={callback}
+                disabled={disabled}
+            >
                 <Text style={styles.dataItemNumberTxt}>{number}</Text>
                 <Text style={styles.dataItemDescTxt}>{desc}</Text>
             </TouchableOpacity>
+        );
+    };
+
+    const renderItem = ({ item, index, section}) => {
+        return (
+            <View style={styles.renderItemView}>
+                <Text style={styles.renderItemTxt}>{item}</Text>
+            </View>
+        );
+    };
+
+    const ListHeader = ({ title }) => {
+        return (
+            <View style={styles.listHeaderView}>
+                <Text style={styles.listHeaderTxt}>{title}</Text>
+                <TouchableOpacity style={styles.closeButton} onPress={hideModal}>
+                    <Image style={styles.closeButtonImage} source={icon_close_modal} />
+                </TouchableOpacity>
+            </View>
+        );
+    };
+
+    const renderSectionHeader = ({ section }) => {
+        return (
+            <View style={styles.renderSectionHeaderView}>
+                <Text style={styles.renderSectionHeaderTxt}>{section.type}</Text>
+            </View>
+        );
+    };
+
+    const sectionList = (title) => {
+        return (
+            <View>
+                <View style={styles.blank} />
+                <View style={styles.content}>
+                    <SectionList 
+                        style={styles.sectionList}
+                        contentContainerStyle={styles.containerStyle}
+                        sections={SectionData}
+                        renderItem={renderItem}
+                        keyExtractor={(item, index) => {
+                            return `${item}-${index}`;
+                        }}
+                        showsVerticalScrollIndicator={false}
+                        ListHeaderComponent={() => {
+                            return (
+                                <ListHeader title={title} />
+                            )
+                        }}
+                        renderSectionHeader={renderSectionHeader}
+                        stickySectionHeadersEnabled={true}
+                    />
+                </View>
+            </View>
+        )    
+    };
+
+    const modal = (favourite, title) => {
+        return (
+            <Modal
+                visible={favourite === visible}
+                animationType='slide'
+                transparent={true}
+            >
+                {sectionList(title)}
+            </Modal>
         );
     };
 
@@ -44,9 +126,13 @@ export default (props) => {
         return (
             <View style={styles.userDataView}>
                 <View style={styles.leftView}>
-                    {dataItem(userInfo.favouriteNumber, '关注')}
-                    {dataItem(userInfo.fansNumber, '粉丝')}
-                    {dataItem(userInfo.zanNumber, '获赞与收藏')}
+                    {dataItem(userInfo.favouriteNumber, '关注', false, () => {
+                        showModal('favourite');
+                    })}
+                    {dataItem(userInfo.fansNumber, '粉丝', false, () => {
+                        showModal('fans');
+                    })}
+                    {dataItem(userInfo.zanNumber, '获赞与收藏', true)}
                 </View>
                 <View style={styles.rightView}>
                     <TouchableOpacity style={styles.editTouchableOpacity}>
@@ -58,6 +144,8 @@ export default (props) => {
                         <Image style={styles.settingImage} source={icon_setting} />
                     </TouchableOpacity>
                 </View>
+                {modal('favourite', '关注列表')}
+                {modal('fans', '粉丝列表')}
             </View>
         );
     };
@@ -201,5 +289,67 @@ const styles = StyleSheet.create({
         height: 30,
         tintColor: 'white',
         resizeMode: 'contain',
+    },
+    blank: {
+        width: '100%',
+        height: '15%',
+        backgroundColor: 'transparent',
+    },
+    content: {
+        width: '100%',
+        height: '85%',
+        backgroundColor: '#F5F5F5',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
+    },
+    sectionList: {
+        width: '100%',
+        height: '100%'
+    },
+    containerStyle: {
+        backgroundColor: '#FFFFFF',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
+    },
+    renderItemView: {
+        width: '100%',
+        height: 40,
+        justifyContent: 'center'
+    },
+    renderItemTxt: {
+        fontSize: 15,
+        color: '#333333',
+        paddingLeft: 16
+    },
+    renderSectionHeaderView: {
+        width: '100%',
+        height: 40,
+        backgroundColor: '#999999',
+        justifyContent: 'center',
+    },
+    renderSectionHeaderTxt: {
+        fontSize: 15,
+        marginLeft: 16
+    },
+    listHeaderView: {
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    listHeaderTxt: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    closeButton: {
+        height: 20,
+        width: 20,
+        position: 'absolute',
+        right: 16
+    },
+    closeButtonImage: {
+        height: 20,
+        width: 20
     }
 });
