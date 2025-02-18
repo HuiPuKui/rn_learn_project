@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import TestApi from './src/8/8.4/components/TestApi';
+import TestApi from './src/8/8.5/components/TestApi';
 import {
   SafeAreaView,
   StatusBar,
