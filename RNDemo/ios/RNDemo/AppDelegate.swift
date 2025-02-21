@@ -27,4 +27,23 @@ class AppDelegate: RCTAppDelegate {
     Bundle.main.url(forResource: "main", withExtension: "jsbundle")
 #endif
   }
+  
+  override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+
+    if url.scheme == "schemeTest" {
+      let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+      let name = components?.queryItems?.first(where: { $0.name == "name" })?.value
+      
+      if let name = name {
+        let schemeTestVC = SchemeTestViewController()
+        schemeTestVC.name = name
+
+        if let rootVC = window.rootViewController {
+            rootVC.present(schemeTestVC, animated: true, completion: nil)
+        }
+      }
+    }
+    
+    return true
+  }
 }
