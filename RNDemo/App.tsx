@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import TestApi from './src/8/8.12/components/TestApi';
+import TestApi from './src/8/8.13/components/TestApi';
 import {
   SafeAreaView,
   StatusBar,
@@ -23,9 +23,7 @@ function App(): React.JSX.Element {
         barStyle='dark-content'
         backgroundColor='#FFFFFF'
       />
-      {/* <View style={styles.container}> */}
-        <TestApi />
-      {/* </View> */}
+      <TestApi />
     </SafeAreaView>
   );
 }
