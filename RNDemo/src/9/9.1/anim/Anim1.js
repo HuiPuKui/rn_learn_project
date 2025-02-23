@@ -11,8 +11,8 @@ export default () => {
                 title="按钮"
                 onPress={() => {
                     Animated.timing(marginLeft, {
-                        toValue: 200,
-                        duration: 1000,
+                        toValue: 300,
+                        duration: 500,
                         useNativeDriver: false,
                     }).start();
                 }}
