@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import Anim10 from './src/9/9.10/anim/Anim10';
+import Anim11 from './src/9/9.11/anim/Anim11';
 import {
   SafeAreaView,
   StatusBar,
@@ -23,7 +23,7 @@ function App(): React.JSX.Element {
         barStyle='dark-content'
         backgroundColor='#FFFFFF'
       />
-      <Anim10 />
+      <Anim11 />
     </SafeAreaView>
   );
 }
