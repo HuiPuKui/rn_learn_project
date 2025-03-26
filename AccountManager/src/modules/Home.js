@@ -1,7 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useRef } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import AddAccount from "../components/AddAccount";
+
+import icon_add from '../assets/icon_add.png';
 
 export default () => {
+
+    const addAccountRef = useRef(null);
 
     const renderTitle = () => {
         return (
@@ -14,6 +20,18 @@ export default () => {
     return (
         <View style={styles.root}>
             { renderTitle() }
+
+            <TouchableOpacity 
+                style={styles.addButton}
+                activeOpacity={0.5}
+                onPress={() => {
+                    addAccountRef.current.show()
+                }}
+            >
+                <Image style={styles.addImg} source={icon_add} />
+            </TouchableOpacity>
+
+            <AddAccount ref={addAccountRef} />
         </View>
     );
 }
@@ -34,5 +52,15 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#333333',
         fontWeight: 'bold'
+    },
+    addButton: {
+        position: 'absolute',
+        bottom: 64,
+        right: 28,
+    },
+    addImg: {
+        width: 56,
+        height: 56,
+        resizeMode: 'contain',
     }
 })
