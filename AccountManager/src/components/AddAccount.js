@@ -1,11 +1,16 @@
 import React, { forwardRef, use, useImperativeHandle, useLayoutEffect, useState } from "react";
 import { Image, KeyboardAvoidingView, Modal, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
+import { getUUID } from "../utils/UUID";
+import { load, save } from "../utils/Storage";
+
 import icon_close_modal from '../assets/icon_close_modal.png';
 
 export default forwardRef((props, ref) => {
 
     const [visible, setVisible] = useState(false)
+
+    const [id, setId] = useState('');
 
     const [type, setType] = useState('游戏');
 
@@ -17,6 +22,8 @@ export default forwardRef((props, ref) => {
 
     const show = () => {
         setVisible(true);
+
+        setId(getUUID());
     }
 
     const hide = () => {
@@ -29,6 +36,17 @@ export default forwardRef((props, ref) => {
             hide: hide,
         }
     });
+
+    const onSavePress = () => {
+        const newAccount = { id, type, name, account, password };
+        load('accountList').then((data) => {
+            let accountList = data ? JSON.parse(data) : [];
+            accountList.push(newAccount);
+            save('accountList', JSON.stringify(accountList)).then(() => {
+                hide();
+            });
+        });
+    }
 
     const renderTitle = () => {
 
@@ -241,6 +259,7 @@ export default forwardRef((props, ref) => {
         return (
             <TouchableOpacity
                 style={styles.saveButton}
+                onPress={onSavePress}
             >
                 <Text style={styles.saveTxt}>保 存</Text>
             </TouchableOpacity>
